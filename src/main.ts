@@ -6,12 +6,9 @@ const loader = new Loader({
 });
 
 let map: google.maps.Map;
-loader.load().then(async () => {
-  const { Map } = (await google.maps.importLibrary(
-    "maps"
-  )) as google.maps.MapsLibrary;
+loader.importLibrary("maps").then(async ({ Map }) => {
   map = new Map(document.getElementById("map") as HTMLElement, {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8,
+    center: { lat: 0, lng: 0 },
+    zoom: 1,
   });
 });
