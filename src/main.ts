@@ -1,14 +1,17 @@
-import { Loader } from "@googlemaps/js-api-loader";
+import { CustomGoogleMap } from "./CustomGoogleMap";
 
-const loader = new Loader({
-  apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
-  version: "weekly",
-});
+const customGoogleMap = new CustomGoogleMap("map");
 
-let map: google.maps.Map;
-loader.importLibrary("maps").then(async ({ Map }) => {
-  map = new Map(document.getElementById("map") as HTMLElement, {
-    center: { lat: 0, lng: 0 },
-    zoom: 1,
-  });
+customGoogleMap.addMarker({
+  location: {
+    lat: 0,
+    lng: 0,
+  },
+  markerContent: `
+      <div>
+        <h1>Company Name: Septian</h1>
+        <h3>Catchphrase: Hello</h3>
+      </div>
+    `,
+  color: "blue",
 });
